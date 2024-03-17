@@ -2,14 +2,11 @@
 <!-- {% load static %} -->
 
 
- {% block banner %}
-
+{% block banner %}
 {% include 'banner.html' %}
-
- {% endblock banner %}
+{%endblock banner %} 
  <!-- because banner is inside header, i closed the the header div tag here -->
-</div>
-</div>
+
 
 
 {% block content %}
@@ -205,6 +202,30 @@
             </div>
         </div>
     </div>
+
+<!-- Brands -->
+
+    <!-- <div class="brands">
+        <div class="small-container">
+            <div class="row">
+                <div class="col-5">
+                    <img src="{% static 'images/logo-godrej.png' %}">
+                </div>
+                <div class="col-5">
+                    <img src="{% static 'images/logo-oppo.png' %}">
+                </div>
+                <div class="col-5">
+                    <img src="{% static 'images/logo-coca-cola.png' %}">
+                </div>
+                <div class="col-5">
+                    <img src="{% static 'images/logo-paypal.png' %}">
+                </div>
+                <div class="col-5">
+                    <img src="{% static 'images/logo-philips.png' %}">
+                </div>
+            </div>
+        </div>
+    </div> -->
     {% endblock content %}
 
     <!-- Testimonial -->
@@ -257,29 +278,6 @@
         </div>
     </div> -->
 
-    <!-- Brands -->
-<!-- 
-    <div class="brands">
-        <div class="small-container">
-            <div class="row">
-                <div class="col-5">
-                    <img src="{% static 'images/logo-godrej.png' %}">
-                </div>
-                <div class="col-5">
-                    <img src="{% static 'images/logo-oppo.png' %}">
-                </div>
-                <div class="col-5">
-                    <img src="{% static 'images/logo-coca-cola.png' %}">
-                </div>
-                <div class="col-5">
-                    <img src="{% static 'images/logo-paypal.png' %}">
-                </div>
-                <div class="col-5">
-                    <img src="{% static 'images/logo-philips.png' %}">
-                </div>
-            </div>
-        </div>
-    </div> -->
 
     <!-- Footer -->
 
