@@ -7,9 +7,12 @@ def index(request):
     return render(request,'index.html')
 
 def prdlist(request):
+    page = 1
+    if request.GET:
+        page = request.GET.get('page')
     products = Product.objects.all()
     product_paginator = Paginator(products,12)
-    products = product_paginator.get_page(1)
+    products = product_paginator.get_page(page)
     context = {'products':products}
     return render(request,'productlist.html',context)
 

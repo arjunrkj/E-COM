@@ -30,19 +30,28 @@
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star-o"></i>
             </div>
-            <p>{{product.price}}</p>
+            <p>Rs {{product.price}}</p>
         </div>
         {% endfor %}
  
     </div>
     {% endfor %}
+
     <div class="page-btn">
-        <span>1</span>
-        <span>2</span>
-        <span>3</span>
-        <span>4</span>
-        <span>→</span>
+        {% if products.has_previous %}
+            <a href="?page={{ products.previous_page_number }}"><span>&lt;&lt;</span></a>
+        {% endif %}
+
+        {% if products.paginator.num_pages > 1 %}
+            {% for i in products.paginator.page_range %}
+                <a href="?page={{ i }}"><span>{{ i }}</span></a>
+            {% endfor %}
+        {% endif %}
+        {% if products.has_next %}
+        <a href="?page={{ products.next_page_number }}"><span>&gt;&gt;</span></a>
+        {% endif %}
     </div>
+    
 </div>
 
 {% endblock content %}
