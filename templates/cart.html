@@ -1,4 +1,5 @@
 {% extends 'blanklayout.html' %}
+{% load static %}
 
 {%block content%}
 <div class="small-container cart-page">
@@ -71,4 +72,18 @@
         </tbody></table>
     </div>
 </div>
+<div style="text-align: center;">
+    <p style="margin-bottom: 10px;">As Razorpay is currently not accepting new onboarders, we have no choice but to include our QR code.</p>
+    <p style="margin-bottom: 10px;">Kindly make the payment from the registered mobile number.</p>
+    <p style="margin-bottom: 10px;">After you pay,click payment completed to ship your order.</p>
+    <p style="margin-bottom: 10px;">Once you click payment completed, you will recieve order confirmation message <br> in whatsapp within 3 hours.</p>
+    <div style="display: inline-block;">
+        <img src="{% static 'images/qr.png' %}" style="height: 500px; width: 500px; display: block; margin: 0 auto;">
+    </div>
+    <div style="margin-top: 10px;">
+        <a href="" class="btn">Process Order </a>
+</div>
+
+
+
 {% endblock content %}

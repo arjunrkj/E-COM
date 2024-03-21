@@ -16,5 +16,7 @@ def prdlist(request):
     context = {'products':products}
     return render(request,'productlist.html',context)
 
-def prddes(request):
-    return render(request, 'productdes.html')
+def prddes(request,pk):
+    product = Product.objects.get(id=pk)
+    context = {'product':product}
+    return render(request, 'productdes.html',context)

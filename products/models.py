@@ -13,6 +13,7 @@ class Product(models.Model):
     prioriy = models.IntegerField(default=0)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateField(auto_now=True)
+    collection = models.CharField(max_length=100, null=True)
 
     def __str__(self) -> str:
         return self.title
