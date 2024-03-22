@@ -1,10 +1,13 @@
 from django.shortcuts import render
-from .models import Product
+from .models import Product,Collection
 from django.core.paginator import Paginator
 
 # Create your views here.
 def index(request):
-    return render(request,'index.html')
+    collections = Collection.objects.all()[:4]
+    featured_products = Product.objects.order_by('priority')[:4]
+    context = {'collections':collections,'featured':featured_products}
+    return render(request,'index.html',context)
 
 def prdlist(request):
     page = 1
@@ -20,3 +23,8 @@ def prddes(request,pk):
     product = Product.objects.get(id=pk)
     context = {'product':product}
     return render(request, 'productdes.html',context)
+
+def collection_view(request,collection_name):
+    shirts = Product.objects.filter(collection__collection_name=collection_name)
+    context = {'products':shirts}
+    return render(request,'productlist.html',context)
