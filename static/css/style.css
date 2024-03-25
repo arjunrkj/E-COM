@@ -29,7 +29,7 @@ nav ul li{
 }
 a{
     text-decoration: none;
-    color: #555;
+    color: black;
 }
 p{
     color: #555;
@@ -71,12 +71,10 @@ p{
 .btn:hover{
     background: #563434;
 }
-.header{
-    background: radial-gradient(#fff,#ffd6d6);
-}
-.header .row{
-    margin-top: 70px;
-}
+
+.header {
+    background: linear-gradient(to bottom, #0097b2, #fff);
+  }
 .categories{
     margin: 70px 0;
 }
@@ -141,7 +139,7 @@ h4{
 }
 /* Offer */
 .offer{
-    background: radial-gradient(#fff, #ffd6d6);
+    background: linear-gradient(to bottom, #fff, #0097b2);
     margin-top: 80px;
     padding: 30px 0;
 }
@@ -387,19 +385,37 @@ th:last-child{
 /* Account page */
 .account-page{
     padding: 50px 0;
-    background: radial-gradient(#fff, #ffd6d6);
+    /* background: radial-gradient(#fff, #0097b2); */
 }
-.form-container{
+.msg-container {
     background: #fff;
     width: 300px;
-    height: 400px;
+    height: fit-content;
     position: relative;
     text-align: center;
     padding: 20px 0;
     margin: auto;
     box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
+    overflow: hidden; /* Adjust the position upwards */
 }
+.error{
+    color: red;
+}
+.success{
+    color:green;
+}
+.form-container {
+    background: #fff;
+    width: 300px;
+    height: 450px;
+    position: relative;
+    text-align: center;
+    padding: 20px 0;
+    margin: auto;
+    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Adjust the position upwards */
+}
+
 .form-container span{
     font-weight: bold;
     padding: 0 10px;
@@ -434,12 +450,20 @@ form .btn{
 form .btn:focus{
     outline: none;
 }
-#LoginForm{
-    left: -300px;
-}
-#RegForm{
-    left: 0;
-}
+#LoginForm {
+    transform: translateX(0px);  /* Ensure initial visibility */
+    position: absolute; /* Absolute positioning for stacking */
+    z-index: 0;  /* Lower z-index for Login form to be behind */
+  }
+  
+  #RegForm {
+    transform: translateX(300px);  /* Hide Registration Form initially */
+    overflow-y: auto;  /* Enable vertical scrolling */
+    position: absolute; /* Absolute positioning for stacking */
+    z-index: 1;  /* Higher z-index for Registration form to be on top */
+  }
+  
+  
 form a{
     font-size: 12px;
 }

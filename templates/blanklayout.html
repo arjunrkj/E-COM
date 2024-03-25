@@ -15,21 +15,29 @@
 
 <body>
     
+
     <div class="header">
         <div class="container">
 <div class="navbar">
     <div class="logo">
-        <a href="{% url 'home' %}"><img src="{% static 'images/logo1.png' %}" alt="logo" width="125px"></a>
+        <a href="{% url 'home' %}"><img src="{% static 'images/out2.png' %}" alt="logo" width="125px"></a>
     </div>
     <nav>
         <ul id="MenuItems">
             <li><a href="{% url 'home' %}">Home</a></li>
-            <li><a href="{% url 'products' %}">Products</a></li>
-            <li><a href="{% url 'account' %}">Account</a></li>
+            <li><a href="{% url 'products' %}">All Products</a></li>
+            {% if not user.is_authenticated %}
+            <li><a href="{% url 'account' %}">Sign-In</a></li>
+            {% endif %}
+            {% if user.is_authenticated %}
             <li><a href="{% url 'account' %}">Your Orders</a></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+            {% endif %}
         </ul>
     </nav>
+    {% if user.is_authenticated %}
     <a href="{% url 'cart' %}"><img src="{% static 'images/cart.png' %}"" width="30px" height="30px"></a>
+    {% endif %}
     <img src="{% static 'images/menu.png' %}" class="menu-icon" onclick="menutoggle()">
 </div>
 {%block banner %}
@@ -46,7 +54,18 @@
 {% block content %}
 
 {% endblock content%}
-
+<script>
+    var MenuItems = document.getElementById("MenuItems");
+    MenuItems.style.maxHeight = "0px";
+    function menutoggle() {
+        if (MenuItems.style.maxHeight == "0px") {
+            MenuItems.style.maxHeight = "200px"
+        }
+        else {
+            MenuItems.style.maxHeight = "0px"
+        }
+    }
+</script>
    <!-- Footer -->
 {% include 'footer.html' %}
 
