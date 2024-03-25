@@ -27,8 +27,8 @@
                     </div>
                     <form id="LoginForm" method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
-                        <input type="text" placeholder="Email">
-                        <input type="password" placeholder="Password">
+                        <input type="text" name="username" placeholder="Email">
+                        <input type="password" name="password" placeholder="Password">
                         <button name="login" type="submit" class="btn">Login</button>
                         <a href="">Login with otp</a>
                     </form>

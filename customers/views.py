@@ -38,7 +38,7 @@ def accountview(request):
 
     if request.POST and 'login' in request.POST:
         context['login']=True
-        username = request.POST.get('email')
+        username = request.POST.get('username')
         password = request.POST.get('password')
 
         user = authenticate(username=username,password=password)
