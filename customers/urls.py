@@ -6,5 +6,7 @@ from . import views
 
 urlpatterns = [
     path('account', views.accountview, name='account'),
-    path('logout',views.sign_out,name='logout')
+    path('logout',views.sign_out,name='logout'),
+    path('otppage',views.otppage,name='otppage'),
+    path('otpval',views.otpval,name='otpval')
 ]

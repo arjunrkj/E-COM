@@ -13,6 +13,7 @@ class Customer(models.Model):
     delete_status = models.IntegerField(choices=DELETE_CHOICES,default=LIVE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    otp = models.CharField(max_length=4, null=True, blank=True)
 
     def __str__(self) -> str:
         return self.name
