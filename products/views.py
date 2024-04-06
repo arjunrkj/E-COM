@@ -6,7 +6,8 @@ from django.core.paginator import Paginator
 def index(request):
     collections = Collection.objects.all()[:4]
     featured_products = Product.objects.order_by('priority')[:4]
-    context = {'collections':collections,'featured':featured_products}
+    exclusive = Product.objects.get(priority=10)
+    context = {'collections':collections,'featured':featured_products,'exclusive':exclusive}
     return render(request,'index.html',context)
 
 def prdlist(request):

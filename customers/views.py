@@ -31,8 +31,7 @@ def accountview(request):
                 address=address,
                 name=fullname
             )
-
-            messages.success(request,'Registration Succesful')
+            login(request,user)
             return redirect('home')
         except Exception as e:
             error_msg="email already registered"
@@ -46,7 +45,7 @@ def accountview(request):
         user = authenticate(username=username,password=password)
         if user:
             login(request,user)
-            messages.success(request,'Login succesful')
+            # messages.success(request,'Login succesful')
             return redirect('home')
         else:
             # Check if the email exists in the database
@@ -81,7 +80,7 @@ def otppage(request):
                 context = {'email': email}
                 return render(request, 'otpval.html', context)
             except User.DoesNotExist:
-                messages.error(request, 'User does not exist/ incorrect mail')
+                messages.error(request, 'User does not exist/ Incorrect mail')
         elif 'register' in request.POST:
             return accountview(request)
 

@@ -1,0 +1,14 @@
+{% extends 'blanklayout.html' %}
+{% load static %}
+{%block content%}
+<div style="text-align: center;">
+    <p style="margin-bottom: 10px;">Kindly Make the payment via registered mobile number : {{mobile}}</p>
+    <p style="margin-bottom: 10px;"> Payable amount : {{amount}} <br> </p>
+    <div style="display: inline-block;">
+        <img src="{% static 'images/qr.png' %}" style="height: 500px; width: 500px; display: block; margin: 0 auto;">
+    </div>
+    <p style="margin-bottom: 10px;"><b>Click Confirm Order Only after you Pay</b></p>
+    <div style="margin-top: 10px;">
+        <a href="" class="btn">Confirm Order </a>
+</div>
+{%endblock content %}
