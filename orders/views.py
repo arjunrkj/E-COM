@@ -37,6 +37,24 @@ def orderpage(request):
     payable = request.GET.get('total')
     user = request.user
     customer = user.customer_info
-    cart_obj = Order.objects.get(owner=customer,order_status=Order.CART_STAGE)
     context = {'mobile':mobile,'amount':payable}
     return render(request,'orderpage.html',context)
+
+def orderconfirm(request):
+    try:
+        if request.POST:
+            user = request.user
+            customer = user.customer_info
+            order_obj = Order.objects.get(owner=customer, order_status=Order.CART_STAGE)
+            order_obj.order_status = Order.ORDER_CONFIRMED
+            price = float(request.POST.get('amt'))
+            order_obj.total_price=price
+            order_obj.save()
+            messages.success(request, 'Your Order is being Processed')
+            messages.success(request, 'You will receive a confirmation message on WhatsApp within 4 hours')
+            return render(request, 'confirmorder.html')
+    except Exception as e:
+        messages.error(request, 'No more items in the cart')
+    return render(request,'confirmorder.html')
+
+    

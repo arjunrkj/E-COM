@@ -16,4 +16,4 @@ class Customer(models.Model):
     otp = models.CharField(max_length=4, null=True, blank=True)
 
     def __str__(self) -> str:
-        return self.name
+        return self.user.username

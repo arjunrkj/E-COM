@@ -6,6 +6,9 @@
 
 body{
     font-family: 'Poppins', sans-serif;
+    position: relative;
+    margin: 0;
+    padding-bottom: 100px;
 }
 
 .navbar
@@ -198,12 +201,17 @@ small{
 .col-5 img:hover{
     filter: grayscale(0);
 }
+#quantity{
+    width: 60px;
+}
 /* Footer */
 .footer{
     background: black;
     color: #8a8a8a;
     font-size: 14px;
     padding: 60px 0 20px;
+    width: 100%;
+    position:absolute;
 }
 .footer p{
     color: #8a8a8a;

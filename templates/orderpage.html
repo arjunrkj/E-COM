@@ -1,14 +1,20 @@
 {% extends 'blanklayout.html' %}
 {% load static %}
 {%block content%}
+<form method="post" action="{% url 'orderconfirm' %}">
+    {% csrf_token %}
 <div style="text-align: center;">
     <p style="margin-bottom: 10px;">Kindly Make the payment via registered mobile number : {{mobile}}</p>
+    <input type="hidden" value="{{amount}}" name="amt">
     <p style="margin-bottom: 10px;"> Payable amount : {{amount}} <br> </p>
     <div style="display: inline-block;">
         <img src="{% static 'images/qr.png' %}" style="height: 500px; width: 500px; display: block; margin: 0 auto;">
     </div>
     <p style="margin-bottom: 10px;"><b>Click Confirm Order Only after you Pay</b></p>
     <div style="margin-top: 10px;">
-        <a href="" class="btn">Confirm Order </a>
+        <button type="submit" class="btn">Confirm Order</button>
 </div>
+</div>
+</form>
+
 {%endblock content %}

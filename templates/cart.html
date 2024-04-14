@@ -30,7 +30,8 @@
                         <img src="{{cartitem.product.image.url}}">
                         <div>
                             <p>{{cartitem.product.title}}</p>
-                            <small>Price: {{cartitem.product.price}}</small>
+                            <small>Price: {{cartitem.product.price}}</small><br>
+                            <small>Size: {{cartitem.size}}</small>
                             <br>
                             <a href="{% url 'removeitem' cartitem.id %}">Remove</a>
                         </div>
@@ -46,14 +47,14 @@
     <div class="total-price">
         <table>
             <tbody>
-                <form method="get" action="{% url 'orderpage' %}"></form>
             <tr>
                 <td>Total</td>
-                <td name="total">${% gettotal cart %}</td>
+                <td>${% gettotal cart %}</td>
             </tr>
             <tr>
                 <td>
-                    <form method="get" action="{% url 'orderpage' %}">
+                    <form method="get" action="{% url 'orderpage' %}" enctype="multipart/form-data">
+                    <input type="hidden" name="total" value="{% gettotal cart %}">
                     <button type='submit' class="btn">Order Now</button>
                     </form>
                 </td>

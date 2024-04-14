@@ -1,0 +1,9 @@
+{% extends 'blanklayout.html' %}
+{% load static %}
+{%block content%}
+<div style="text-align: center;">
+    {% for message in messages %}
+    <p style="margin-bottom: 10px;">{{message}}</p>
+    {% endfor %}
+
+{%endblock content %}
