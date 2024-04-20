@@ -30,7 +30,7 @@
             <li><a href="{% url 'account' %}">Sign-In</a></li>
             {% endif %}
             {% if user.is_authenticated %}
-            <li><a href="{% url 'account' %}">Your Orders</a></li>
+            <li><a href="{% url 'orderstatus' %}">Your Orders</a></li>
             <li><a href="{% url 'logout' %}">Logout</a></li>
             {% endif %}
         </ul>

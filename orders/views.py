@@ -2,8 +2,10 @@ from django.shortcuts import render,redirect
 from .models import Order,OrderItem
 from products.models import Product
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+@login_required(login_url='account')
 def cart(request):
     user = request.user
     customer = user.customer_info
@@ -15,6 +17,7 @@ def cart(request):
     context = {'cart':cart_obj,'flag':flag}
     return render(request, 'cart.html',context)
 
+@login_required(login_url='account')
 def addtocart(request):
     if request.POST:
         user = request.user
@@ -27,11 +30,13 @@ def addtocart(request):
         orderitem = OrderItem.objects.create(product=product,owner=cart_obj,quantity=quantity,size=size)
         return redirect('cart')
     
+@login_required(login_url='account')
 def removeitem(request,pk):
     item=OrderItem.objects.get(id=pk)
     item.delete()
     return redirect('cart')
 
+@login_required(login_url='account')
 def orderpage(request):
     mobile = request.user.customer_info.phone
     payable = request.GET.get('total')
@@ -40,6 +45,7 @@ def orderpage(request):
     context = {'mobile':mobile,'amount':payable}
     return render(request,'orderpage.html',context)
 
+@login_required(login_url='account')
 def orderconfirm(request):
     try:
         if request.POST:
@@ -57,4 +63,10 @@ def orderconfirm(request):
         messages.error(request, 'No more items in the cart')
     return render(request,'confirmorder.html')
 
-    
+@login_required(login_url='account')
+def view_orders(request):
+    user = request.user
+    customer = user.customer_info
+    all_orders = Order.objects.filter(owner=customer).exclude(order_status=Order.CART_STAGE)
+    context={'orders':all_orders}
+    return render(request, 'orderstatus.html',context)
